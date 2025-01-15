@@ -4,13 +4,11 @@ from shot import *
 import pygame
 
 class Player(CircleShape):
-    
-    _rotation = 0
-    
     def __init__(self, x = int, y = int):
         super().__init__(x, y, PLAYER_RADIUS)
         pygame.sprite.Sprite.__init__(self, (DRAWABLE, UPDATABLE))
-        _rotation = 0
+        self._rotation = 0
+        self.shoot_timer = 0.0
 
     # in the player class
     def triangle(self):
@@ -36,7 +34,11 @@ class Player(CircleShape):
         if keys[pygame.K_s]:
             self.move(-dt)
         if keys[pygame.K_SPACE]:
-            self.shoot(dt)
+            if self.shoot_timer > PLAYER_SHOOT_COOLDOWN:
+                self.shoot(dt)
+                self.shoot_timer = 0
+
+        self.shoot_timer += dt
 
     def rotate(self, dt):
         self._rotation += PLAYER_TURN_SPEED * dt

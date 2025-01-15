@@ -38,8 +38,13 @@ class Engine():
                 object.update(self._dt)
 
             for object in ASTEROIDS:
-                if object.collide_with(self._player):
+                if(object.collide_with(self._player)):
                     raise Exception("Game over!")
+                
+                for projectile in PROJECTILES:
+                    if(object.collide_with(projectile)):
+                        object.split()
+                        projectile.kill()
 
             for object in DRAWABLE:
                 object.draw(self._window)
