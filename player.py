@@ -8,6 +8,7 @@ class Player(CircleShape):
     
     def __init__(self, x = int, y = int):
         super().__init__(x, y, PLAYER_RADIUS)
+        pygame.sprite.Sprite.__init__(self, (DRAWABLE, UPDATABLE))
         _rotation = 0
 
     # in the player class
@@ -20,7 +21,7 @@ class Player(CircleShape):
         return [a, b, c]
     
     def draw(self, screen):
-        pygame.draw.polygon(screen, (0,0,0), self.triangle(), 2)
+        pygame.draw.polygon(screen, (255,255,255), self.triangle(), 2)
 
     def update(self, dt):
         keys = pygame.key.get_pressed()
