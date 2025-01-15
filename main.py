@@ -1,7 +1,11 @@
-import pygame
+
+from engine import Engine
 
 def main():
-    print("Starting asteroids!")
+    Engine.__init__()
+    Engine.game_loop()
+
+
 
 
 
