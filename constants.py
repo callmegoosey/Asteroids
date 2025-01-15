@@ -12,6 +12,8 @@ PLAYER_RADIUS = 20
 PLAYER_TURN_SPEED = 300
 PLAYER_SPEED = 200
 
+SHOT_RADIUS = 5
+
 #declaration of groups/tags
 UPDATABLE = pygame.sprite.Group()
 DRAWABLE = pygame.sprite.Group()
